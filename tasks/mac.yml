@@ -7,7 +7,7 @@
 
 - name: Copy configuration file
   template:
-    src: metricbeat.yml
+    src: metricbeat.yml.j2
     dest: "{{ mac_install_location }}/metricbeat.yml"
     owner: root
     mode: 0600
@@ -18,12 +18,7 @@
     src: co.elastic.metricbeat.plist
     dest: /Library/LaunchDaemons/co.elastic.metricbeat.plist
   become: yes
-  register: metricbeat_service
-
-- name: Load service
-  shell: launchctl unload /Library/LaunchDaemons/co.elastic.metricbeat.plist; launchctl load /Library/LaunchDaemons/co.elastic.metricbeat.plist
-  become: yes
-  when: metricbeat_service.changed
+  notify: Reload metricbeat mac
 
 - name: Set configuration dir
   set_fact:

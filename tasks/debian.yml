@@ -6,19 +6,12 @@
 
 - name: Copy metricbeat configuration
   template:
-    src: metricbeat.yml
+    src: metricbeat.yml.j2
     dest: "/etc/metricbeat/metricbeat.yml"
     owner: root
     mode: 0600
   become: yes
-  register: metricbeat_service
-
-- name: Restart metricbeat on change
-  service:
-    name: metricbeat
-    state: restarted
-  become: yes
-  when: metricbeat_service.changed
+  notify: Reload metricbeat linux
 
 - name: Enable metricbeat service
   service:
