@@ -1,0 +1,7 @@
+---
+elk_version: "7.4.0"
+mac_install_location: "/Applications/Metricbeat"
+elastic_search_address: "127.0.0.1:9200"
+configure_kibana: true
+kibana_address: "127.0.0.1:5601"
+ilm_enabled: true

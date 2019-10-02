@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  role_name: metricbeat
+  author: hmschreck
+  description: Basic install of Elastic's Metricbeat
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  platforms:
+  - name: Fedora
+    versions: ["all"]
+  - name: CentOS
+    versions: ["6", "7", "8"]
+  - name: Debian
+    versions: ["all"]
+  - name: Ubuntu
+    versions: ["all"]
+  - name: RHEL
+    versions: ["6", "7", "8"]
+  - name: macOS
+    versions: ["10.8+"]
+
+  galaxy_tags: ["elastic", "metricbeat", "elk"]
+
+  dependencies: []

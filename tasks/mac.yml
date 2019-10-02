@@ -1,0 +1,30 @@
+---
+- name: Download and extract
+  unarchive:
+    src: "https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
+    dest: "{{ mac_install_location }}"
+    remote_src: yes
+
+- name: Copy configuration file
+  template:
+    src: metricbeat.yml
+    dest: "{{ mac_install_location }}/metricbeat.yml"
+    owner: root
+    mode: 0600
+  become: yes
+
+- name: Copy service file
+  template:
+    src: co.elastic.metricbeat.plist
+    dest: /Library/LaunchDaemons/co.elastic.metricbeat.plist
+  become: yes
+  register: metricbeat_service
+
+- name: Load service
+  shell: launchctl unload /Library/LaunchDaemons/co.elastic.metricbeat.plist; launchctl load /Library/LaunchDaemons/co.elastic.metricbeat.plist
+  become: yes
+  when: metricbeat_service.changed
+
+- name: Set configuration dir
+  set_fact:
+    metricbeat_config_dir: "{{ mac_install_location }}"
