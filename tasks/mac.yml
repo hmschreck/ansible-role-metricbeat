@@ -1,7 +1,7 @@
 ---
 - name: Download metricbeat tarball (workaround)
   shell: "curl https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz -o metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
-  creates: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
+    creates: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
   register: downloaded_metricbeat
 
 - name: Extract
