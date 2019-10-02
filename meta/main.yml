@@ -11,16 +11,14 @@ galaxy_info:
   platforms:
   - name: Fedora
     versions: ["all"]
-  - name: CentOS
-    versions: ["6", "7", "8"]
   - name: Debian
     versions: ["all"]
   - name: Ubuntu
     versions: ["all"]
-  - name: RHEL
-    versions: ["6", "7", "8"]
+  - name: EL
+    versions: [ "7", "8"]
   - name: macOS
-    versions: ["10.8+"]
+    versions: ["10.8", "10.9", "10.10", "10.11", "10.12", "10.13", "10.14"]
 
   galaxy_tags: ["elastic", "metricbeat", "elk"]
 
