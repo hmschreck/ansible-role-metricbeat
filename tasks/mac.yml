@@ -1,17 +1,12 @@
 ---
-- name: Ensure that installation directory exists
-  file:
-    path: /Applications/Metricbeat
-    state: directory
-
 - name: Download metricbeat tarball (workaround)
   shell: "curl https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz -o metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
+  creates: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
+  register: downloaded_metricbeat
 
-- name: Download and extract
-  unarchive:
-    src: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
-    dest: "{{ mac_install_location }}"
-    remote_src: true
+- name: Extract
+  shell: "gunzip -c metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz | tar -xf - && cp -R metricbeat-{{ elk_version }}-darwin-x86_64/ /Applications/Metricbeat"
+  when: downloaded_metricbeat.changed
 
 - name: Copy configuration file
   template:
