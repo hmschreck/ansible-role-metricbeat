@@ -11,6 +11,7 @@
   unarchive:
     src: "~/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
     dest: "{{ mac_install_location }}"
+    remote_src: yes
 
 - name: Copy configuration file
   template:
