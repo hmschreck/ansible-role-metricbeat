@@ -9,7 +9,7 @@
 
 - name: Download and extract
   unarchive:
-    src: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
+    src: "~/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
     dest: "{{ mac_install_location }}"
 
 - name: Copy configuration file
