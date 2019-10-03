@@ -7,6 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>{{ mac_install_location}}/metricbeat</string>
+        <string>-e</string>
         <string>-c</string>
         <string>{{ mac_install_location}}/metricbeat.yml</string>
     </array>
