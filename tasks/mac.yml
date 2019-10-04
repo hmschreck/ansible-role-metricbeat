@@ -10,6 +10,7 @@
 - name: Extract
   shell: "gunzip -c metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz | tar -xf - && cp -R metricbeat-{{ elk_version }}-darwin-x86_64/ /Applications/Metricbeat"
   when: downloaded_metricbeat.changed
+  become: yes
 
 - name: Copy configuration file
   template:
