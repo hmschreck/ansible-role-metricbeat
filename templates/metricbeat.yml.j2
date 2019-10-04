@@ -18,7 +18,7 @@ metricbeat.config.modules:
   reload.enabled: true
   reload.period: {{ metricbeat_reload_period }}
 {% endif %}
-tags: ["{{ metricbeat_tags | join('\",\")}}"]
+tags: ["{{ metricbeat_tags | join('\",\"')}}"]
 #==================== Elasticsearch template setting ==========================
 
 setup.template.settings:
