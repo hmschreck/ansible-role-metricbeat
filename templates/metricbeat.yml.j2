@@ -14,10 +14,10 @@ metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
 
   # Set to true to enable config reloading
+  {% if metricbeat_reload %}
   reload.enabled: true
-
-  # Period on which files under path should be checked for changes
-  reload.period: 5m
+  reload.period: {{ metricbeat_reload_period }}
+  {% endif %}
 
 #==================== Elasticsearch template setting ==========================
 

@@ -5,3 +5,5 @@ elastic_search_address: "127.0.0.1:9200"
 configure_kibana: true
 kibana_address: "127.0.0.1:5601"
 ilm_enabled: true
+metricbeat_reload: true
+metricbeat_reload_period: 5m
