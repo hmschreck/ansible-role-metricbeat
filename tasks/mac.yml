@@ -16,14 +16,14 @@
     owner: root
     mode: 0600
   become: yes
-  notify: Reload metricbeat mac
+  notify: reload metricbeat
 
 - name: Copy service file
   template:
     src: co.elastic.metricbeat.plist
     dest: /Library/LaunchDaemons/co.elastic.metricbeat.plist
   become: yes
-  notify: Reload metricbeat mac
+  notify: reload metricbeat
 
 - name: Set configuration dir
   set_fact:

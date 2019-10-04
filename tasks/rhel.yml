@@ -11,7 +11,7 @@
     owner: root
     mode: 0600
   become: yes
-  notify: Reload metricbeat linux
+  notify: reload metricbeat
 
 - name: Enable metricbeat service
   service:
