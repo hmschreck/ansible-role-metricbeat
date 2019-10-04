@@ -1,10 +1,12 @@
 ---
+# This is done to avoid certain issues with Python using older SSL.
 - name: Download metricbeat tarball (workaround)
   shell: "curl https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz -o metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
   args:
     creates: "metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz"
   register: downloaded_metricbeat
 
+# This is done this way to avoid having to set up GNU tar.
 - name: Extract
   shell: "gunzip -c metricbeat-{{ elk_version }}-darwin-x86_64.tar.gz | tar -xf - && cp -R metricbeat-{{ elk_version }}-darwin-x86_64/ /Applications/Metricbeat"
   when: downloaded_metricbeat.changed
