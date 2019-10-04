@@ -14,10 +14,10 @@ metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
 
   # Set to true to enable config reloading
-  {% if metricbeat_reload %}
+{% if metricbeat_reload %}
   reload.enabled: true
   reload.period: {{ metricbeat_reload_period }}
-  {% endif %}
+{% endif %}
 
 #==================== Elasticsearch template setting ==========================
 
@@ -68,9 +68,9 @@ setup.kibana:
   # Scheme and port can be left out and will be set to the default (http and 5601)
   # In case you specify and additional path, the scheme is required: http://localhost:5601/path
   # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  {% if configure_kibana %}
+{% if configure_kibana %}
   host: "{{ kibana_address }}"
-  {% endif %}
+{% endif %}
 
   # Kibana Space ID
   # ID of the Kibana Space into which the dashboards should be loaded. By default,
